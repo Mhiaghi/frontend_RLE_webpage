@@ -58,7 +58,7 @@ const getFormJSON = (form) => {
 const handleFormRegisterSubmit = (event) => {
     event.preventDefault();
     var http = new XMLHttpRequest();
-    var url = "localhost:5000/registro";
+    var url = "http://c6fa-190-237-88-76.ngrok.io/registro";
     var username = document.getElementById("username");
     var password = document.getElementById("password");
     var email = document.getElementById("e-mail");
@@ -77,7 +77,7 @@ const handleFormRegisterSubmit = (event) => {
 function load_main_window_comment_table()
 {
     //Loading data
-    url = "http://127.0.0.1:5000/comentarios"
+    url = "http://c6fa-190-237-88-76.ngrok.io/comentarios"
     var xhr = new XMLHttpRequest();
     var answer
     xhr.open("POST",url,false);
