@@ -62,7 +62,7 @@ const handleFormRegisterSubmit = (event) => {
     var username = document.getElementById("username");
     var password = document.getElementById("password");
     var email = document.getElementById("e-mail");
-    http.open("POST", url, true);
+    http.open("POST", url, false);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     
     http.onreadystatechange = function() {
