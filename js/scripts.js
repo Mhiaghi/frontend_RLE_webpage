@@ -29,7 +29,6 @@ function require_name_webpage(url)
     var answer = require_flask_text_information(url);
     var answer2 = JSON.stringify(answer["name_webpage"])
     answer2 = answer2.replace(/^"(.*)"$/, '$1');
-    console.log(answer)
     return answer2
 }
 function require_flask_text_information(url)
@@ -62,18 +61,24 @@ const handleFormRegisterSubmit = (event) => {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     var email = document.getElementById("e-mail").value;
-    console.log ("usuario", username);
     http.open("POST", url, false);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) { 
         //aqui obtienes la respuesta de tu peticion
-        alert(http.responseText);
+            var respuesta = JSON.parse(http.responseText);
+            if (respuesta["mensaje"] == "OK")
+            {
+                window.location.href = "login.html"
+            }
+            else
+            {
+                alert(respuesta["mensaje"])
+            }
         }
     }
     var elemento_a_enviar = JSON.stringify({email:email, password: password, username:username});
-    console.log(elemento_a_enviar);
     http.send(elemento_a_enviar);
 };
 
@@ -94,7 +99,6 @@ function load_main_window_comment_table()
     };   
     http.send()
     //
-    console.log(answer)
     var ubication = document.getElementById("generate_here_table");
 
     var tabla = document.createElement("table");
