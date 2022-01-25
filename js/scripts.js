@@ -54,6 +54,35 @@ const getFormJSON = (form) => {
         return result;
     }, {});
 };
+
+const handleLoginSubmit = (event) => {
+    event.preventDefault();
+    var http = new XMLHttpRequest();
+    var url = "https://da38-190-237-88-76.ngrok.io/ingreso";
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    http.open("POST", url, false);
+    http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+    http.onreadystatechange = function() {
+        if(http.readyState == 4 && http.status == 200) { 
+        //aqui obtienes la respuesta de tu peticion
+            var respuesta = JSON.parse(http.responseText);
+            if (respuesta["mensaje"] == "OK")
+            {
+                console.log("Usuario admitido")
+                //window.location.href = "login.html"
+            }
+            else
+            {
+                alert(respuesta["mensaje"])
+            }
+        }
+    }
+    var elemento_a_enviar = JSON.stringify({password: password, username:username});
+    http.send(elemento_a_enviar);
+};
+
 const handleFormRegisterSubmit = (event) => {
     event.preventDefault();
     var http = new XMLHttpRequest();

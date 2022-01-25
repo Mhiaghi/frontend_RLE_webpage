@@ -1,0 +1,25 @@
+{% extends 'bases/base_user_es.html' %}
+
+{% block content %}
+
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-4">Comentario</h2>
+                    <form class = "formulario_propio", method = "POST">
+                        <input type = "hidden" name = "csrf_token" value = "{{ csrf_token() }}" />
+                        {% from "macros/macro_fields.html" import render_field %}
+                        {{ render_field(form.comment, class = "cajas-comentario") }}
+                        {{ form.honeypot }}
+                        <div class="intro-button mx-auto"><button type = "submit" class = "personal_button">Enviar</button></div>
+                    </form>
+                    <br>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

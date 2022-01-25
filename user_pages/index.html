@@ -1,0 +1,102 @@
+{% extends 'bases/base_user_es.html' %}
+
+{% block content %} 
+<h2 style="color:white;">Usuario</h2>
+<form method = "POST" enctype="multipart/form-data">
+<div class="container">
+    <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                
+                                {% if(imagen) == None %}
+                                <img  class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{ url_for('static', filename='img/fondo_beagle.jpg') }}" alt="">
+                                {% else %}
+                                <img  class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{ imagen }}" alt="">
+                                {% endif %}
+                                <p><input type="file" name = "file"></p>
+                            </div>
+                            <h5 class="user-name">{{ data[7] }}</h5>
+                            <h6 class="user-email">{{ data[4] }}</h6>
+                        </div>
+                        <div class="about">
+                            <h5 class="mb-2 text-primary">Descripcion</h5>
+                            <p>{{ data[5] }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                
+                    <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-3 text-primary">Información personal</h6>
+                            </div>
+                            <input type = "hidden" name = "csrf_token" value = "{{ csrf_token() }}" />
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                {% from "macros/macro_fields.html" import update_info %}
+                                {{ update_info(form.Nombre_Completo, class = "form-control", placeholder = "Introduce tu nombre completo", value = data[7]) }}
+                                {{ form.honeypot }}
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                {{ update_info(form.Email, class = "form-control", placeholder = "Introduce tu correo electrónico", value = data[4]) }}
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    {{ update_info(form.Cellphone, class = "form-control", placeholder = "Introduce tu número de celular", value = data[8]) }}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    {{ update_info(form.Descripcion, class = "form-control", placeholder = "Introduce tu descripción", value = data[5]) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-3 text-primary">Dirección</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    {{ update_info(form.Calle, class = "form-control", placeholder = "Introduce tu calle", value = data[9]) }}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    {{ update_info(form.Ciudad, class = "form-control", placeholder = "Introduce tu ciudad", value = data[10]) }}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    {{ update_info(form.Region, class = "form-control",  placeholder = "Introduce tu región", value = data[11]) }}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    {{ update_info(form.Codigo_Postal, class = "form-control", placeholder = "Introduce tu código postal", value = data[12]) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancelar</button>
+                                    <button type="submit" id="submit" name="submit" class="btn btn-primary">Actualizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}
+
