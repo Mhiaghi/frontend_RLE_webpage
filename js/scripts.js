@@ -34,16 +34,16 @@ function require_name_webpage(url)
 }
 function require_flask_text_information(url)
 {
-    var xhr = new XMLHttpRequest();
+    var http = new XMLHttpRequest();
     var answer
-    xhr.open("POST",url,false);
-    xhr.onload = function(e) {
-        if (xhr.readyState == 4 && xhr.status == 200)
+    http.open("POST",url,false);
+    http.onload = function(e) {
+        if (http.readyState == 4 && http.status == 200)
         {
-            answer = JSON.parse(xhr.responseText);
+            answer = JSON.parse(http.responseText);
         }
     };   
-    xhr.send()
+    http.send()
     return answer
 }
 
@@ -78,18 +78,18 @@ function load_main_window_comment_table()
 {
     //Loading data
     url = "https://da38-190-237-88-76.ngrok.io/comentarios"
-    var xhr = new XMLHttpRequest();
+    var http = new XMLHttpRequest();
     
     var answer
-    xhr.open("POST",url,true);
+    http.open("POST",url,true);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.onload = function(e) {
-        if (xhr.readyState == 4 && xhr.status == 200)
+    http.onload = function(e) {
+        if (http.readyState == 4 && http.status == 200)
         {
-            answer = JSON.parse(xhr.responseText);
+            answer = JSON.parse(http.responseText);
         }
     };   
-    xhr.send()
+    http.send()
     //
     console.log(answer)
     var ubication = document.getElementById("generate_here_table");
