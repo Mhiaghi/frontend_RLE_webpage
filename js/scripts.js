@@ -63,7 +63,6 @@ const handleLoginSubmit = (event) => {
     var password = document.getElementById("password").value;
     http.open("POST", url, false);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) { 
         //aqui obtienes la respuesta de tu peticion
@@ -80,6 +79,7 @@ const handleLoginSubmit = (event) => {
         }
     }
     var elemento_a_enviar = JSON.stringify({password: password, username:username});
+    console.log(elemento_a_enviar)
     http.send(elemento_a_enviar);
 };
 
