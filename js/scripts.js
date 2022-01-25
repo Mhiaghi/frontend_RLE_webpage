@@ -71,7 +71,9 @@ const handleFormRegisterSubmit = (event) => {
         alert(http.responseText);
         }
     }
-    http.send(JSON.stringify({email:email, password: password, username:username}));
+    var elemento_a_enviar = JSON.stringify({email:email, password: password, username:username});
+    console.log(elemento_a_enviar);
+    http.send(elemento_a_enviar);
 };
 
 function load_main_window_comment_table()
