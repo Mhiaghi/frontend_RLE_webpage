@@ -81,7 +81,7 @@ function load_main_window_comment_table()
     var http = new XMLHttpRequest();
     
     var answer
-    http.open("POST",url,true);
+    http.open("POST",url,false);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     http.onload = function(e) {
         if (http.readyState == 4 && http.status == 200)
