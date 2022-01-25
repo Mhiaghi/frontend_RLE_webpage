@@ -59,9 +59,10 @@ const handleFormRegisterSubmit = (event) => {
     event.preventDefault();
     var http = new XMLHttpRequest();
     var url = "https://da38-190-237-88-76.ngrok.io/registro";
-    var username = document.getElementById("username");
-    var password = document.getElementById("password");
-    var email = document.getElementById("e-mail");
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var email = document.getElementById("e-mail").value;
+    console.log ("usuario", username);
     http.open("POST", url, false);
     http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     
