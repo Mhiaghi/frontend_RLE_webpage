@@ -39,7 +39,7 @@ function require_flask_text_information(url)
     http.onload = function(e) {
         if (http.readyState == 4 && http.status == 200)
         {
-            answer = JSON.parse(http.responseText);
+            answer = JSON.stringify(JSON.parse(http.responseText));
         }
     };   
     http.send()
@@ -47,18 +47,11 @@ function require_flask_text_information(url)
 }
 
 
-const getFormJSON = (form) => {
-    const data = new FormData(form);
-    return Array.from(data.keys()).reduce((result, key) => {
-        result[key] = data.get(key);
-        return result;
-    }, {});
-};
-
+//LOGIN
 const handleLoginSubmit = (event) => {
     event.preventDefault();
     var http = new XMLHttpRequest();
-    var url = "https://da38-190-237-88-76.ngrok.io/ingreso";
+    var url = "https://1132-190-237-88-76.ngrok.io/autenticacion/ingreso";
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     http.open("POST", url, false);
@@ -69,8 +62,8 @@ const handleLoginSubmit = (event) => {
             var respuesta = JSON.parse(http.responseText);
             if (respuesta["mensaje"] == "OK")
             {
-                console.log("Usuario admitido")
-                //window.location.href = "login.html"
+                console.log(respuesta["mensaje"])
+                window.location.href = "../user_pages/index.html"
             }
             else
             {
@@ -79,14 +72,13 @@ const handleLoginSubmit = (event) => {
         }
     }
     var elemento_a_enviar = JSON.stringify({password: password, username:username});
-    console.log(elemento_a_enviar)
     http.send(elemento_a_enviar);
 };
-
+//REGISTRO
 const handleFormRegisterSubmit = (event) => {
     event.preventDefault();
     var http = new XMLHttpRequest();
-    var url = "https://da38-190-237-88-76.ngrok.io/registro";
+    var url = "https://1132-190-237-88-76.ngrok.io/autenticacion/registro";
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     var email = document.getElementById("e-mail").value;
@@ -110,11 +102,11 @@ const handleFormRegisterSubmit = (event) => {
     var elemento_a_enviar = JSON.stringify({email:email, password: password, username:username});
     http.send(elemento_a_enviar);
 };
-
+//COMENTARIOS
 function load_main_window_comment_table()
 {
     //Loading data
-    url = "https://da38-190-237-88-76.ngrok.io/comentarios"
+    url = "https://1132-190-237-88-76.ngrok.io/comentarios"
     var http = new XMLHttpRequest();
     
     var answer
@@ -174,4 +166,51 @@ function load_main_window_comment_table()
     tabla.appendChild(tblBody);
     ubication.appendChild(tabla);
     
+}
+
+//USUARIO
+function load_user_information()
+{
+    url = "https://1132-190-237-88-76.ngrok.io/usuario/"
+    var http = new XMLHttpRequest();
+    
+    var answer
+    http.open("POST",url,false);
+    http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    http.onload = function(e) {
+        if (http.readyState == 4 && http.status == 200)
+        {
+            answer = JSON.parse(http.responseText);
+        }
+    };   
+
+    http.send()
+    var img_perfil_ubicacion = document.getElementById('user-avatar-colocar-imagen')
+    var img_perfil = new Image();
+    if(answer["imagen"] == "NA")
+    {
+        img_perfil.src = "../img/fondo_beagle.jpg";
+    }
+    else
+    {
+        img_perfil.src = answer["imagen"];
+    }
+    img_perfil.className = "img-fluid rounded about-heading-img mb-3 mb-lg-0"
+    img_perfil_ubicacion.appendChild(img_perfil);
+    var Nombre_Completo_ubicacion = document.getElementById('Nombre_Completo')
+    Nombre_Completo_ubicacion.innerText = answer['Nombre_Completo']
+    var Correo_Electronico_ubicacion = document.getElementById('Correo_Electronico')
+    Correo_Electronico_ubicacion.innerText = answer['Correo_Electronico']
+    var Numero_Celular_ubicacion = document.getElementById('Numero_Celular')
+    Numero_Celular_ubicacion.innerText = answer['Numero_Celular']
+    var Descripcion_ubicacion = document.getElementById('Descripcion')
+    Descripcion_ubicacion.innerText = answer['Descripcion']
+    var Calle_ubicacion = document.getElementById('Calle')
+    Calle_ubicacion.innerText = answer['Calle']
+    var Ciudad_ubicacion = document.getElementById('Ciudad')
+    Ciudad_ubicacion.innerText = answer['Ciudad']
+    var Region_ubicacion = document.getElementById('Region')
+    Region_ubicacion.innerText = answer['Region']
+    var Codigo_postal_ubicacion = document.getElementById('Codigo_postal')
+    Codigo_postal_ubicacion.innerText = answer['Codigo_postal']
 }
