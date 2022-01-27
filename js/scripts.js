@@ -51,7 +51,7 @@ function require_flask_text_information(url)
 const handleLoginSubmit = (event) => {
     event.preventDefault();
     var http = new XMLHttpRequest();
-    var url = "https://1132-190-237-88-76.ngrok.io/autenticacion/ingreso";
+    var url = "https://4ff5-190-237-88-76.ngrok.io/autenticacion/ingreso";
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     http.open("POST", url, false);
@@ -78,7 +78,7 @@ const handleLoginSubmit = (event) => {
 const handleFormRegisterSubmit = (event) => {
     event.preventDefault();
     var http = new XMLHttpRequest();
-    var url = "https://1132-190-237-88-76.ngrok.io/autenticacion/registro";
+    var url = "https://4ff5-190-237-88-76.ngrok.io/autenticacion/registro";
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     var email = document.getElementById("e-mail").value;
@@ -106,7 +106,7 @@ const handleFormRegisterSubmit = (event) => {
 function load_main_window_comment_table()
 {
     //Loading data
-    url = "https://1132-190-237-88-76.ngrok.io/comentarios"
+    url = "https://4ff5-190-237-88-76.ngrok.io/comentarios"
     var http = new XMLHttpRequest();
     
     var answer
@@ -171,7 +171,7 @@ function load_main_window_comment_table()
 //USUARIO
 function load_user_information()
 {
-    url = "https://1132-190-237-88-76.ngrok.io/usuario/"
+    url = "https://4ff5-190-237-88-76.ngrok.io/usuario/"
     var http = new XMLHttpRequest();
     
     var answer
