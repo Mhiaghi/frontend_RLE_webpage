@@ -1,9 +1,49 @@
-{% extends 'bases/base_user_es.html' %}
-{% block content %} 
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title id = "titulo_pagina">Tienda</title> <!-- Nombre del usuario-->
+        <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link type = "text/css" href="../css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
 
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+                <span class="site-heading-upper text-primary mb-3">Veterinaria</span>
+                <span class="site-heading-lower">SeidorVet</span>
+            </h1>
+        </header>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">SeidorVet</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Usuario</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="store.html">Tienda</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="carrito.html">Carrito</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="comment.html">Deja un Comentario</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="desconexion.html">Desconectarse</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
 <section class="content">
     <div class="box box-primary">
         <div class="box-header">
+            <!--
             {% with messages = get_flashed_messages()  %}
             {% if messages %}
             {% for message in messages %}
@@ -14,8 +54,9 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-          </div>
-          
+            -->
+        </div>
+        
         <div class="box-body">
             <div class="card text-center">
                 <div class="card-header">
@@ -33,38 +74,13 @@
                             </tr>
                         </thead>
       
-                        <tbody>
-                            {% if data|length == 0 %}
-                            <tr>
-                                <td>No hay productos en el carrito</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            {% else %}
-                            {% for row in data %}
-                            <tr>
-                                <th>{{ row[0] }}</th>
-                                <th>{{ row[1] }}</th>
-                                <th>{{ row[2] }}</th>
-                                <th>{{ row[3] }}</th>
-                                <th align="center">
-                                    <a href="/es/usuario/store/carrito/eliminar_producto/{{ row[4] }}">
-                                        <button type="button" class="btn btn-sm btn-danger btn-flat" title="Delete">
-                                            <span class="glyphicon glyphicon-remove">X</span>
-                                        </button>
-                                    </a>
-                                </th>
-                            </tr>
-                            {% endfor %}
-                            {% endif %}
-                            
+                        <tbody id = "colocar_info_carrito">
+     
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer text-muted">
-                    <h1>Precio Total : {{ precio_total }}</h1>
+                    <h1 id = "colocar_precio_total"></h1>
                     <a href="/es/usuario/store/pagar">
                         <button type="button" class="btn btn-success">PAGAR</button>
                     </a>
@@ -78,4 +94,21 @@
 
 </section>
 
-{% endblock %}
+<footer class="footer text-faded text-center py-5">
+    <div class="container">
+        <p class="m-0 small">Copyright &copy; ClaroPeMascota 2021</p>
+        
+    </div>
+    
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+<!-- Core theme JS-->
+<script src="../js/scripts.js"></script>
+<script>
+    window.onload = load_IBM_virtualAssistant();
+    window.onload = load_carrito_information();
+</script>
+</body>
+</html>
