@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Administrador</title>
+        <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link type = "text/css" href="../css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../css/dataTables.bootstrap.css">
+    </head>
+    <body>
+        <header>
+
+            <h1 class="site-heading text-center text-faded d-none d-lg-block">
+                <span class="site-heading-upper text-primary mb-3">Veterinaria</span>
+                <span class="site-heading-lower">ClaroPeMascota</span>
+            </h1>
+        </header>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">ClaroPeMascota</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.html">Administrador</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="manejo_usuarios.html">Estadísticas</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="desconexion.html">Desconectarse</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br><br>
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">Usuarios</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="manejo_usuarios.html">Ver detalles</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-warning text-white mb-4">
+                    <div class="card-body"> Productos </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="manejo_productos.html">Ver detalles</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body"> Comentarios </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="manejo_comentarios.html">Ver detalles</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body"> Reportes de error </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">Ver detalles</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="container bg-dark">
+    <section class="content">
+          <div class="box box-info">
+                <br><br>
+                <div class="box-header with-border">
+                      <center>
+                            <h3 class="box-title" style = "color: white">Nuevo producto</h3>
+                      </center>
+                </div>
+                <br>
+          </div>
+
+          <form class="form-horizontal" method="POST" id = "formulario_ingresar_producto">
+                <div class="box-body">
+                      <div class="form-group">
+                            <label class="col-sm-2 control-label" for = "nombre" style = "color: white">Nombre</label>
+                            <div class="col-sm-10">
+                                <input name="nombre" id ="nombre" type="text" class="form-control" placeholder="Nombre" autocomplete="off"
+                                    required>
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                            <label class="col-sm-2 control-label" for = "imagen" style = "color: white">Imagen - URL</label>
+                            <div class="col-sm-10">
+                                <input name="imagen" id ="imagen" type="text" class="form-control" placeholder="Imagen" autocomplete="off"
+                                    required>
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                            <label class="col-sm-2 control-label" for = "precio" style = "color: white">Precio</label>
+                            <div class="col-sm-10">
+                                <input name="precio" id ="precio" type="text" class="form-control" placeholder="Precio" autocomplete="off"
+                                    required>
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                            <label class="col-sm-2 control-label" for = "stock" style = "color: white">Stock</label>
+                            <div class="col-sm-10">
+                                <input name="stock" id ="stock" type="text" class="form-control" placeholder="Stock" autocomplete="off"
+                                    required>
+                            </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label" for = "disponible" style = "color: white">Disponible</label>
+                        <div class="col-sm-10">
+                            <input name="disponible" id ="disponible" type="text" class="form-control" placeholder="Disponible" autocomplete="off"
+                                required>
+                        </div>
+                  </div>
+
+                        <br>
+                      <div class="box-footer">
+                            <a href="./manejo_productos.html"> <button type="button" class="btn btn-default" style = "background-color: white"> Cancel</button> </a>
+                            <input type="submit" name="save" class="btn btn-info pull-right" value="Save" />
+                      </div>
+                </div>
+
+
+          </form>
+    </section>
+</div>
+
+
+<footer class="footer text-faded text-center py-5">
+      <div class="container">
+          <p class="m-0 small">Copyright &copy; SeidorVet 2021</p>
+         
+      </div>
+      
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="../js/scripts.js"></script>
+  <script>
+      window.onload = load_IBM_virtualAssistant();
+      const formElement = document.querySelector('form#formulario_ingresar_producto')
+      formElement.addEventListener("submit",crearProductoByAdmin)
+    </script>
+  <script src="../js/jquery.dataTables.min.js"></script>
+  <script src="../js/dataTables.bootstrap.min.js"></script>
+  <script>
+      const myFunction = () => {
+      const trs = document.querySelectorAll('#myTable tr:not(.header)');
+      const filter = document.querySelector('#myInput').value;
+      const regex = new RegExp(filter, 'i');
+      const isFoundInTds = (td) => regex.test(td.innerHTML);
+      const isFound = (childrenArr) => childrenArr.some(isFoundInTds);
+      const setTrStyleDisplay = ({ style, children }) => {
+          style.display = isFound([...children]) ? '' : 'none';
+      };
+  
+      trs.forEach(setTrStyleDisplay);
+      };
+  </script>
+  </body>
+  </html>
+  
