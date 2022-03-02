@@ -11,8 +11,9 @@
 // })
 
 
-const url_backend = "https://seidorvet-backend.azurewebsites.net/";
+//const url_backend = "https://seidorvet-backend.azurewebsites.net/";
 //const url_backend = "http://127.0.0.1:5000/";
+const url_backend = "https://e91a-190-237-88-217.ngrok.io/";
 const secret_key = "l=j_.B4uEBq[y4ljD^4y+v?74}zji#Fr";
 const num_productos = 0;
 
@@ -299,7 +300,7 @@ function LeavingAComment() {
             var respuesta = JSON.parse(http.responseText);
             if (respuesta["mensaje"] == "OK")
             {
-                window.location.href = "comentario.html"
+                location.reload();
             }
             else
             {
