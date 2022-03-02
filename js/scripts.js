@@ -300,7 +300,8 @@ function LeavingAComment() {
             var respuesta = JSON.parse(http.responseText);
             if (respuesta["mensaje"] == "OK")
             {
-                window.location.href = "comment.html"
+                console.log(respuesta["mensaje"])
+                location.reload();
             }
             else
             {
